@@ -1,12 +1,12 @@
-package br.com.softplan.legalprocess;
+package br.com.softplan.process;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LegalprocessApplication {
+public class ProcessApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(LegalprocessApplication.class, args);
+		SpringApplication.run(ProcessApplication.class, args);
 	}
 }
