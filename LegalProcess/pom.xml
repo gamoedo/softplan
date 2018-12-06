@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.softplan</groupId>
-	<artifactId>LegalProcess</artifactId>
+	<artifactId>legalprocess</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>LegalProcess</name>
+	<name>legalprocess</name>
 	<description>Demo project for Spring Boot</description>
 
 	<properties>

@@ -1,4 +1,4 @@
-package br.com.softplan.LegalProcess;
+package br.com.softplan.legalprocess;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class LegalProcessApplicationTests {
+public class LegalprocessApplicationTests {
 
 	@Test
 	public void contextLoads() {
