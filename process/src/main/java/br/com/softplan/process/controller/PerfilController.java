@@ -30,7 +30,7 @@ public class PerfilController {
     @Autowired
     PerfilService perfilService;
 
-    @PostMapping(value = "/rest/perfil/", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(value = "/rest/perfil/salvar", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseStatus(code = HttpStatus.CREATED)
     public Perfil salvarPerfil(@RequestBody @Valid Perfil perfil) throws UnprocessableEntityException {
 	

@@ -3,6 +3,7 @@ package br.com.softplan.process.service;
 import java.util.List;
 
 import br.com.softplan.process.model.Usuario;
+import javassist.NotFoundException;
 
 public interface UsuarioService {
 
@@ -10,10 +11,10 @@ public interface UsuarioService {
 
     List<Usuario> listarTodosUsuarios();
     
-    void excluirUsuario(Integer usuarioId);
+    void excluirUsuario(Integer usuarioId) throws NotFoundException;
     
-    Usuario retornaDadosUsuario(Integer usuarioId);
+    Usuario retornaDadosUsuario(Integer usuarioId) throws NotFoundException;
         
-    Usuario logarUsuario(String login, String senha);    
+    Usuario logarUsuario(String login, String senha) throws NotFoundException;    
     
 }

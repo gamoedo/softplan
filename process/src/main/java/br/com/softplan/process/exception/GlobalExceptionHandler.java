@@ -23,21 +23,21 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({ HttpMessageNotReadableException.class, MethodArgumentNotValidException.class, MissingServletRequestParameterException.class, TypeMismatchException.class })
     public ErrorMessage handleBadRequest(Exception e) {
 	logger.error("handleBadRequest: StatusCode: 400");
-	return new ErrorMessage("400", "Processo not provided in the request body");
+	return new ErrorMessage("400", "Processo não fornecido no corpo da solicitação.");
     }
 
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
     @ExceptionHandler(UnprocessableEntityException.class)
     public ErrorMessage handleUnprocessableEntity(UnprocessableEntityException e) {
 	logger.error("handleUnprocessableEntity: StatusCode: 422");
-	return new ErrorMessage("422", "Invalid processo provided. The possible reasons are: A field of the provided processo was null or with invalid values");
+	return new ErrorMessage("422", "Processo fornecido é inválido. Possíveis razões: Um campo do processo fornecido está nulo ou com valores inválidos.");
     }
-
+    
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler(NotFoundException.class)
     public ErrorMessage handleNotFound(NotFoundException e) {
 	logger.error("handleNotFound: StatusCode: 404");
-	return new ErrorMessage("404", "Processo not found with the specified id");
+	return new ErrorMessage("404", "Processo não foi encontrado com o id informado.");
     }
 
     @Getter

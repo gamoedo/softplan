@@ -12,7 +12,9 @@ public interface ProcessoService {
     List<Processo> listarTodosProcessos();
     
     List<Processo> listarProcessosSemParecer();   
+    
+    Processo buscaProcesso(Integer processoId) throws NotFoundException;
         
-    void emitirParecer(Integer processoId, Processo processoRequest) throws NotFoundException;
+    void emitirParecer(Integer usuarioId, Processo processo) throws NotFoundException;
 
 }
