@@ -13,7 +13,7 @@ export class UsuarioService {
     
     let headers = new Headers ({ 'Content-Type': 'application/json' });
 
-    headers.append('Access-Control-Allow-Origin', 'http://localhost:8080');
+    headers.append('Access-Control-Allow-Origin', 'http://localhost:4200');
     headers.append('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
     headers.append('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     headers.append('Access-Control-Allow-Credentials', 'true');        
@@ -27,7 +27,7 @@ export class UsuarioService {
       let Usuario = usuario;
       let body = JSON.stringify(usuario);
 
-      return this.http.post('http://localhost:8080/rest/usuario/salvar', body, options)
+      return this.http.post('http://localhost:4200/rest/usuario/salvar', body, options)
       .toPromise()
       .then((response) => {return response.json()})
       .catch(error => {

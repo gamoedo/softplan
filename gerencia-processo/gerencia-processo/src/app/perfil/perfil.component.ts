@@ -9,7 +9,7 @@ import { PerfilService } from './perfil.service';
 })
 export class PerfilComponent implements OnInit {
 
-  //perfil = new Perfil(0, "");    
+  perfil = new Perfil(0, "");    
 
   ngOnInit() {
   }

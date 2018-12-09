@@ -1,5 +1,27 @@
 <h1>
-  {{title}}
+  Gestão de Processos
 </h1>
 
-<app-usuario></app-usuario>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/#">Home</a>
+  <!-- <a class="navbar-brand" routerLink="/usuario">Usuario</a> -->
+    
+      
+       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Usuário
+        </a>
+
+      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+         <a class="navbar-brand" routerLink="/usuario">Cadastrar Usuario</a>
+         <a class="navbar-brand" routerLink="/perfil">Listar Usuario</a>
+      </div>
+  
+
+  <a class="navbar-brand" routerLink="/perfil">Perfil</a>
+  <a class="navbar-brand" routerLink="/processo">Processo</a>
+</nav>
+
+<router-outlet></router-outlet>
+
