@@ -22,7 +22,7 @@ import lombok.EqualsAndHashCode;
 public class Processo {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_processo")
     private Integer processoId;
     

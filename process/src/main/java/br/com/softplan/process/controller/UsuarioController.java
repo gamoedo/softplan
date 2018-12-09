@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.softplan.process.controller.request.UsuarioRequest;
 import br.com.softplan.process.exception.UnprocessableEntityException;
 import br.com.softplan.process.model.Usuario;
 import br.com.softplan.process.service.UsuarioService;
@@ -30,12 +31,24 @@ public class UsuarioController {
     @Autowired
     UsuarioService usuarioService;
 
-    @PostMapping(value = "/rest/usuario/salvar", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(value = "/rest/usuario/salvar", 
+	    	 consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, 
+	    	 produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Usuario salvarUsuario(@RequestBody @Valid Usuario usuario) throws UnprocessableEntityException {
+    public Usuario salvarUsuario(@RequestBody @Valid UsuarioRequest usuarioRequest) throws UnprocessableEntityException {
 	
 	logger.info("salvarUsuario: Recebendo usuario");
 
+	Usuario usuario;
+	
+	try {
+	    logger.info("salvarUsuario: Convertendo usuarioRequest para usuario");
+	    usuario = usuarioRequest.toModel();
+	} catch (Exception e) {
+	    logger.info("salvarUsuario: Conversão falhou.");
+	    throw new UnprocessableEntityException();
+	}
+	
 	usuario = usuarioService.salvarUsuario(usuario);	
 	
 	logger.info("salvarUsuario: Retornando usuario salvo");

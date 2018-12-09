@@ -8,29 +8,16 @@ CREATE TABLE IF NOT EXISTS `softplan`.`tb_perfil` (
 ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `softplan`.`tb_usuario` (
-  `id_usuario` INT NOT NULL AUTO_INCREMENT,
-  `ds_login` VARCHAR(45) NULL,
-  `ds_senha` VARCHAR(45) NULL,
-  `fl_ativo` TINYINT(1) NULL DEFAULT 1,
-  PRIMARY KEY (`id_usuario`))
-ENGINE = InnoDB;
+  `id_usuario` int(11) NOT NULL AUTO_INCREMENT,
+  `ds_login` varchar(45) DEFAULT NULL,
+  `ds_senha` varchar(45) DEFAULT NULL,
+  `fl_ativo` tinyint(1) DEFAULT '1',
+  `id_perfil` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_usuario`),
+  KEY `fk_usuario_perfil_1_idx` (`id_perfil`),
+  CONSTRAINT `fk_usuario_perfil_1` FOREIGN KEY (`id_perfil`) REFERENCES `tb_perfil` (`id_perfil`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE IF NOT EXISTS `softplan`.`tb_usuario_perfil` (
-  `id_usuario` INT NOT NULL,
-  `id_perfil` INT NOT NULL,
-  PRIMARY KEY (`id_usuario`, `id_perfil`),
-  INDEX `tb_usuario_perfil_fk_2_idx` (`id_perfil` ASC),
-  CONSTRAINT `fk_usuario_perfil_1`
-    FOREIGN KEY (`id_usuario`)
-    REFERENCES `softplan`.`tb_usuario` (`id_usuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_usuario_perfil_2`
-    FOREIGN KEY (`id_perfil`)
-    REFERENCES `softplan`.`tb_perfil` (`id_perfil`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
 
 CREATE TABLE IF NOT EXISTS `softplan`.`tb_processo` (
   `id_processo` INT NOT NULL AUTO_INCREMENT,
@@ -64,3 +51,7 @@ CREATE TABLE IF NOT EXISTS `softplan`.`tb_usuario_processo` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+INSERT INTO `softplan`.`tb_perfil` (`id_perfil`, `ds_perfil`) VALUES ('1', 'Usuário Administrador');
+INSERT INTO `softplan`.`tb_perfil` (`id_perfil`, `ds_perfil`) VALUES ('2', 'Usuario Triador');
+INSERT INTO `softplan`.`tb_perfil` (`id_perfil`, `ds_perfil`) VALUES ('3', 'Usuário Finalizador');

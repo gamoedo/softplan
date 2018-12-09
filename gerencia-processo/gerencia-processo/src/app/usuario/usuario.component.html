@@ -1,0 +1,60 @@
+<h3 class="container col-6">
+  Cadastrar Usuário
+</h3>
+<div class="card container col-6">
+  <form class="card-block" (ngSubmit)="salvarUsuario()" *ngIf="! enviado" #formulario="ngForm">
+      <div class="form-group" [class.has-success]="login.valid" [class.has-danger]="login.invalid">
+          <label for="login">Login</label>
+          <input class="form-control" [class.form-control-success]="login.valid" type="text" id="login" 
+          [(ngModel)]="usuario.login" name="login" #login="ngModel" placeholder="Login" required>
+
+
+          <div [hidden]="usuario.login.valid || usuario.login.pristine">
+            <p>O valor LOGIN é obrigatório</p>
+        </div>
+      </div>
+
+      <div class="form-group" [class.has-success]="senha.valid" [class.has-danger]="senha.invalid">
+          <label for="senha">Senha</label>
+          <input class="form-control" [class.form-control-success]="login.valid" type="password" id="senha" 
+          [(ngModel)]="usuario.senha" name="senha" #senha="ngModel" placeholder="Senha" required>
+
+        <div [hidden]="usuario.senha.valid || usuario.senha.pristine">
+            <p>O valor SENHA é obrigatório</p>
+        </div>
+      </div>
+
+
+      <div class="form-group">
+          <label for="tipo">Perfil do Usuário</label>
+          <select id="tipo" [(ngModel)]="usuario.perfilId" name="perfil" #tipo="ngModel">
+          <option class="form-control" *ngFor="let item of perfis"  [value]="item.perfilId">{{item.descricao}}</option>
+      </select>
+      </div>
+
+      <button class="btn" type="submit" [disabled]="formulario.form.invalid">Cadastrar</button>
+  </form>
+</div>
+
+<div class="card card-block container col-6" *ngIf="enviado">
+  <div>
+      <h2>Dados do contato Enviado!</h2>
+  </div>
+
+  <div>
+      <p>login do Contato: <strong>{{_login}}</strong></p>
+  </div>
+
+  <div>
+      <p>senha do Contato: <strong>{{_senha}}</strong></p>
+  </div>
+
+  <div>
+      <p>Email do Contato: <strong>{{_email}}</strong></p>
+  </div>
+
+  <div>
+      <p>Tipo do Contato: <strong>{{_tipo}}</strong></p>
+  </div>
+  <button (click)="voltar()">Voltar</button>
+</div>

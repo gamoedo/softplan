@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
@@ -20,7 +21,7 @@ import lombok.EqualsAndHashCode;
 public class Usuario {
     
     @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id_usuario")
     private Integer usuarioId;
     
@@ -34,6 +35,7 @@ public class Usuario {
     private Boolean isAtivo;
     
     @ManyToOne
+    @JoinColumn(name = "id_perfil")
     private Perfil perfil;
     
     @ManyToMany(mappedBy = "usuariosComAcessoProcesso")
