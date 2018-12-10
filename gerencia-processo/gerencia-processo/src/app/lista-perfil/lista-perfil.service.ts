@@ -1,19 +1,17 @@
 import { Injectable } from '@angular/core';
-import { Usuario } from '../usuario/usuario';
+import { Perfil } from 'app/perfil/perfil';
 import { HttpModule, Http, Headers, RequestOptions, Response} from '@angular/http';
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { ListaUsuario } from './lista-usuario';
 
 @Injectable()
-export class ListaUsuarioService {
+export class ListaPerfilService {
 
-  listaUsuarios: ListaUsuario [] = [];
+  listaPerfis: Perfil [] = [];
 
   constructor(public http: Http) {
   }
 
-  listarUsuarios(): Observable<ListaUsuario>{
+  listarPerfis(): Observable<Perfil>{
     
     let headers = new Headers ({ 'Content-Type': 'application/json' });
 
@@ -24,10 +22,9 @@ export class ListaUsuarioService {
 
     let options = new RequestOptions({ headers: headers }); 
 
-    return this.http.get('http://localhost:4200/rest/usuario/listar', options)
+    return this.http.get('http://localhost:4200/rest/perfil/listar', options)
                     .map(res=>res.json())
                     .catch(err=> Observable.throw(err.message));
     }
 
 }
-

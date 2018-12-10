@@ -13,6 +13,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 
 import { AppRoutingModule }     from './app-routing/app-routing.module';
 import { ListaUsuarioComponent } from './lista-usuario/lista-usuario.component';
+import { ListaPerfilComponent } from './lista-perfil/lista-perfil.component';
+import { ProcessoComponent } from './processo/processo.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { ListaUsuarioComponent } from './lista-usuario/lista-usuario.component';
     PerfilComponent,
     UsuarioComponent,
     DashboardComponent,
-    ListaUsuarioComponent
+    ListaUsuarioComponent,
+    ListaPerfilComponent,
+    ProcessoComponent
   ],
   imports: [
     BrowserModule,    

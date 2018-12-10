@@ -40,7 +40,7 @@
             </div>
             <select id="perfil" [(ngModel)]="usuario.perfilId" name="perfil" #tipo="ngModel">
                  <option class="form-control" value="" selected>Selecione um perfil</option>
-                 <option class="form-control" *ngFor="let item of perfis" [value]="item.perfilId">{{item.descricao}}</option>
+                 <option class="form-control" *ngFor="let item of listaPerfis" [value]="item.perfilId">{{item.descricao}}</option>
             </select>              
       </div>      
 

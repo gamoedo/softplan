@@ -1,0 +1,59 @@
+<br>
+<h3 class="w3-container w3-blue col-6">
+  Criar Novo Processo
+</h3>
+<div class="card w3-container w3-blue col-6"></div>
+<div class="card w3-container w3-blue col-6">
+  <form class="card-block" (ngSubmit)="salvarProcesso()" *ngIf="! enviado" #formulario="ngForm">
+    
+    <div class="input-group mb-3">  
+        <div class="form-group" [class.has-success]="titulo.valid" [class.has-danger]="titulo.invalid">
+            <label for="titulo">Título do Processo *</label>
+            <input class="form-control" [class.form-control-success]="titulo.valid" type="text" id="titulo" 
+            [(ngModel)]="processo.titulo" name="titulo" #titulo="ngModel" placeholder="Título" required>
+
+
+            <div [hidden]="titulo.valid || titulo.pristine">
+                    <small [ngClass]="{'form-control-danger': 'titulo.invalid || titulo.drity',
+                                'form-control-feedback': 'titulo.invalid || titulo.drity'}">O titulo é um campo obrigatório!</small>
+                </div>
+        </div>
+    </div>
+
+    <div class="input-group mb-3">  
+      <div class="form-group" [class.has-success]="descricao.valid" [class.has-danger]="descricao.invalid">
+          <label for="descricao">Descrição *</label>
+          <input class="form-control" [class.form-control-success]="descricao.valid" type="text" id="descricao" 
+          [(ngModel)]="processo.descricao" name="descricao" #descricao="ngModel" placeholder="Descrição" required>
+
+
+          <div [hidden]="descricao.valid || descricao.pristine">
+                  <small [ngClass]="{'form-control-danger': 'descricao.invalid || descricao.drity',
+                              'form-control-feedback': 'descricao.invalid || descricao.drity'}">A descricao é um campo obrigatório!</small>
+              </div>
+      </div>
+  </div>
+
+  <div class="input-group mb-12">  
+    <div class="form-group" [class.has-success]="parecer.valid" [class.has-danger]="parecer.invalid">
+        <label for="parecer">Parecer</label>
+        <input class="form-control texto-parecer" [class.form-control-success]="parecer.valid" type="text" id="parecer"
+        [disabled]="!podeAcessarParecer()"
+        [(ngModel)]="processo.parecer" name="parecer" #parecer="ngModel" placeholder="">        
+    </div>
+</div>
+
+       <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Usuários Aptos a Dar Parecer</label>
+            </div>
+            <select id="usuariosComAcessoProcesso" [(ngModel)]="processo.usuariosComAcessoProcesso" name="usuariosComAcessoProcesso" 
+            [disabled]="!podeDarAcessoAUsuarioFinalizador()" #usuariosComAcessoProcesso="ngModel">
+                 <option class="form-control" value="" selected>Selecione um usuário para dar acesso ao processo</option>
+                 <option class="form-control" *ngFor="let item of listaUsuariosFinalizadores" [value]="item.usuarioId">{{item.login}}</option>
+            </select>              
+      </div>      
+
+      <button class="btn" type="submit" [disabled]="formulario.form.invalid">Cadastrar</button>
+  </form>
+</div>
