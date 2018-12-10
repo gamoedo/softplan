@@ -41,36 +41,9 @@
             <select id="perfil" [(ngModel)]="usuario.perfilId" name="perfil" #tipo="ngModel">
                  <option class="form-control" value="" selected>Selecione um perfil</option>
                  <option class="form-control" *ngFor="let item of perfis" [value]="item.perfilId">{{item.descricao}}</option>
-            </select>
-            <div [hidden]="item.descricao.valid || item.descricao.pristine">
-                    <small [ngClass]="{'form-control-danger': 'item.descricao.invalid || item.descricao.drity',
-                                'form-control-feedback': 'item.descricao.invalid || item.descricao.drity'}">O tipo de perfil é um campo obrigatório!</small>
-                </div>           
+            </select>              
       </div>      
 
       <button class="btn" type="submit" [disabled]="formulario.form.invalid">Cadastrar</button>
   </form>
-</div>
-
-<div class="card card-block container col-6" *ngIf="enviado">
-  <div>
-      <h2>Dados do contato Enviado!</h2>
-  </div>
-
-  <div>
-      <p>login do Contato: <strong>{{_login}}</strong></p>
-  </div>
-
-  <div>
-      <p>senha do Contato: <strong>{{_senha}}</strong></p>
-  </div>
-
-  <div>
-      <p>Email do Contato: <strong>{{_email}}</strong></p>
-  </div>
-
-  <div>
-      <p>Tipo do Contato: <strong>{{_tipo}}</strong></p>
-  </div>
-  <button (click)="voltar()">Voltar</button>
 </div>

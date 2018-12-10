@@ -34,11 +34,9 @@ public class UsuarioServiceImpl implements UsuarioService {
     
     @Override
     public List<Usuario> listarTodosUsuarios() {
-
-	Integer ativo = 1;
 	
 	logger.info("listarTodosUsuarios: Buscando todos os usuários no repositório");
-	List<Usuario> listaUsuarios = usuarioRepository.findByIsAtivoTrue(ativo);
+	List<Usuario> listaUsuarios = usuarioRepository.findByIsAtivoTrue(true);
 	logger.info("listarTodosUsuarios: Retornando a lista dos usuários. Tamanho da Lista: " + listaUsuarios.size());
 
 	return listaUsuarios;

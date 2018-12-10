@@ -1,0 +1,28 @@
+<br>
+<h3> Lista de Usuários Ativos </h3>
+
+<div class="row justify-content-start">
+  <div class="col-9">
+      <table class="table">
+          <thead>
+              <tr>
+                  <th>Id</th>
+                  <th>Login</th>
+                  <th>Senha</th>
+                  <th>Perfil</th>
+
+              </tr>
+
+          </thead>
+
+          <tbody>
+              <tr [ngStyle]="{'cursor': 'pointer'}" ngInit="listarUsuarios()" *ngFor="let item of listaUsuarios, let i = index">
+                  <th scope="row">{{item.usuarioId}}</th>
+                  <td>{{item.login}}</td>
+                  <td>{{item.senha}}</td>
+                  <td>{{item.perfilDescricao}}</td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+</div>

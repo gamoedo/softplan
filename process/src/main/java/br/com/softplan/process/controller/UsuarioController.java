@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.softplan.process.controller.request.UsuarioRequest;
+import br.com.softplan.process.controller.response.UsuarioResponseList;
 import br.com.softplan.process.exception.UnprocessableEntityException;
 import br.com.softplan.process.model.Usuario;
 import br.com.softplan.process.service.UsuarioService;
@@ -57,10 +58,11 @@ public class UsuarioController {
     }
 
     @GetMapping(value = "/rest/usuario/listar", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    public List<Usuario> listarUsuarios() {
+    public UsuarioResponseList listarUsuarios() {
 	logger.info("listarUsuarios: Gerando lista de usuarios");
 	List<Usuario> listaUsuarios = usuarioService.listarTodosUsuarios();
-	return listaUsuarios;
+	logger.info("listarUsuarios: Convertendo listaUsuarios para UsuarioResponseList");
+	return new UsuarioResponseList(listaUsuarios);
     }
 
     @GetMapping(value = "/rest/usuario/buscar/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)

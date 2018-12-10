@@ -38,7 +38,7 @@ public class Usuario {
     @JoinColumn(name = "id_perfil")
     private Perfil perfil;
     
-    @ManyToMany(mappedBy = "usuariosComAcessoProcesso")
-    private List<Processo> processosComAcesso = new ArrayList<>();
+    //@ManyToMany(mappedBy = "usuariosComAcessoProcesso")
+    //private List<Processo> processosComAcesso = new ArrayList<>();
 
 }
