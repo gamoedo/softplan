@@ -5,17 +5,20 @@ import { PerfilService } from './perfil.service';
 @Component({
   selector: 'app-perfil',
   templateUrl: './perfil.component.html',
-  styleUrls: ['./perfil.component.css']
+  styleUrls: ['./perfil.component.css'],
+  providers: [PerfilService]
 })
 export class PerfilComponent implements OnInit {
 
-  perfil = new Perfil(0, "");    
+  perfil = new Perfil(null, "");    
+
+  constructor(private perfilService: PerfilService) {
+  } 
 
   ngOnInit() {
   }
-
-  enviarDados() {
-  //  alert(`A descrição do perfil é: ${this.perfil.descricao}`);   
+  salvarPerfil(){
+    this.perfilService.salvarPerfil(this.perfil);
   }
 
 }

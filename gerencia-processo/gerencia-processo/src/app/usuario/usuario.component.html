@@ -1,36 +1,52 @@
-<h3 class="container col-6">
+<br>
+<h3 class="w3-container w3-blue col-6">
   Cadastrar Usuário
 </h3>
-<div class="card container col-6">
+<div class="card w3-container w3-blue col-6"></div>
+<div class="card w3-container w3-blue col-6">
   <form class="card-block" (ngSubmit)="salvarUsuario()" *ngIf="! enviado" #formulario="ngForm">
-      <div class="form-group" [class.has-success]="login.valid" [class.has-danger]="login.invalid">
-          <label for="login">Login</label>
-          <input class="form-control" [class.form-control-success]="login.valid" type="text" id="login" 
-          [(ngModel)]="usuario.login" name="login" #login="ngModel" placeholder="Login" required>
+    
+    <div class="input-group mb-3">  
+        <div class="form-group" [class.has-success]="login.valid" [class.has-danger]="login.invalid">
+            <label for="login">Login *</label>
+            <input class="form-control" [class.form-control-success]="login.valid" type="text" id="login" 
+            [(ngModel)]="usuario.login" name="login" #login="ngModel" placeholder="Login" required>
 
 
-          <div [hidden]="usuario.login.valid || usuario.login.pristine">
-            <p>O valor LOGIN é obrigatório</p>
+            <div [hidden]="login.valid || login.pristine">
+                    <small [ngClass]="{'form-control-danger': 'login.invalid || login.drity',
+                                'form-control-feedback': 'login.invalid || login.drity'}">O login é um campo obrigatório!</small>
+                </div>
         </div>
-      </div>
+    </div>
 
-      <div class="form-group" [class.has-success]="senha.valid" [class.has-danger]="senha.invalid">
-          <label for="senha">Senha</label>
-          <input class="form-control" [class.form-control-success]="login.valid" type="password" id="senha" 
-          [(ngModel)]="usuario.senha" name="senha" #senha="ngModel" placeholder="Senha" required>
+      <div class="input-group mb-3">
+        <div class="form-group" [class.has-success]="senha.valid" [class.has-danger]="senha.invalid">
+            <label for="senha">Senha *</label>
+            <input class="form-control" [class.form-control-success]="login.valid" type="password" id="senha" 
+            [(ngModel)]="usuario.senha" name="senha" #senha="ngModel" placeholder="Senha" required>
 
-        <div [hidden]="usuario.senha.valid || usuario.senha.pristine">
-            <p>O valor SENHA é obrigatório</p>
+            <div [hidden]="senha.valid || senha.pristine">
+                    <small [ngClass]="{'form-control-danger': 'senha.invalid || senha.drity',
+                                'form-control-feedback': 'senha.invalid || senha.drity'}">A senha é um campo obrigatório!</small>
+                </div>
         </div>
-      </div>
+     </div>
 
 
-      <div class="form-group">
-          <label for="tipo">Perfil do Usuário</label>
-          <select id="tipo" [(ngModel)]="usuario.perfilId" name="perfil" #tipo="ngModel">
-          <option class="form-control" *ngFor="let item of perfis"  [value]="item.perfilId">{{item.descricao}}</option>
-      </select>
-      </div>
+      <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Perfil do Usuário *</label>
+            </div>
+            <select id="perfil" [(ngModel)]="usuario.perfilId" name="perfil" #tipo="ngModel">
+                 <option class="form-control" value="" selected>Selecione um perfil</option>
+                 <option class="form-control" *ngFor="let item of perfis" [value]="item.perfilId">{{item.descricao}}</option>
+            </select>
+            <div [hidden]="item.descricao.valid || item.descricao.pristine">
+                    <small [ngClass]="{'form-control-danger': 'item.descricao.invalid || item.descricao.drity',
+                                'form-control-feedback': 'item.descricao.invalid || item.descricao.drity'}">O tipo de perfil é um campo obrigatório!</small>
+                </div>           
+      </div>      
 
       <button class="btn" type="submit" [disabled]="formulario.form.invalid">Cadastrar</button>
   </form>

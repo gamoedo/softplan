@@ -1,12 +1,11 @@
-<p>
-  perfil works!
-</p>
+<br>
+<h3 class="w3-container w3-blue col-6">
+    Cadastro de Perfil
+</h3>
 
-<h3 class="container col-6">
-  Cadastro de Perfil
-</h3><form (ngSubmit)="enviarDados()" #cadastro="ngForm">
-<div class="card container col-6">
-  <form class="card-block" (ngSubmit)="enviarDados()" *ngIf="! enviado" #formulario="ngForm">
+  <div class="card w3-container w3-blue col-6"></div>
+  <div class="card w3-container w3-blue col-6">
+  <form class="card-block" (ngSubmit)="salvarPerfil()" *ngIf="! enviado" #formulario="ngForm">
       <div class="form-group" [class.has-success]="descricao.valid" [class.has-danger]="descricao.invalid">
           <label for="descricao">Descrição do Perfil:</label>
           <input class="form-control" [class.form-control-success]="descricao.valid" type="text" id="descricao"

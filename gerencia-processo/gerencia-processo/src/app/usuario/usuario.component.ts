@@ -24,7 +24,6 @@ export class UsuarioComponent implements OnInit {
   }
 
   salvarUsuario(){
-
     this.usuarioService.salvarUsuario(this.usuario);
   }
 

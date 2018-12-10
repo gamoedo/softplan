@@ -4,23 +4,44 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="/#">Home</a>
-  <!-- <a class="navbar-brand" routerLink="/usuario">Usuario</a> -->
-    
+    <ul class="navbar-nav mr-auto">
       
-       <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
-          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Usuário
-        </a>
+        <a class="nav-link" href="/#">Home</a>    
 
-      <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-         <a class="navbar-brand" routerLink="/usuario">Cadastrar Usuario</a>
-         <a class="navbar-brand" routerLink="/perfil">Listar Usuario</a>
-      </div>
-  
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Usuário
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" routerLink="/usuario">Cadastrar Usuário</a>
+              <a class="dropdown-item" routerLink="/usuario">Listar Usuários</a>                            
+            </div>
+          </li>
 
-  <a class="navbar-brand" routerLink="/perfil">Perfil</a>
-  <a class="navbar-brand" routerLink="/processo">Processo</a>
+          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Perfil
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" routerLink="/perfil">Cadastrar Perfil</a>
+                <a class="dropdown-item" routerLink="/perfil">Listar Perfil</a>                
+              </div>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Processo
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" routerLink="/processo">Cadastrar Processo</a>
+                  <a class="dropdown-item" routerLink="/processo">Listar Processo</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" routerLink="/processo">Emitir Parecer</a>
+                </div>
+              </li>
+    
+    
+    </ul>
 </nav>
 
 <router-outlet></router-outlet>
