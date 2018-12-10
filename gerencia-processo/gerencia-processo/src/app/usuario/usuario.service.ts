@@ -23,8 +23,7 @@ export class UsuarioService {
     console.log(usuario);
 
     if (usuario != null){   
-
-      let Usuario = usuario;
+      
       let body = JSON.stringify(usuario);
 
       return this.http.post('http://localhost:4200/rest/usuario/salvar', body, options)

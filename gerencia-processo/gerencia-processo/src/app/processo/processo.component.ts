@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Processo } from './processo';
 import { Usuario } from 'app/usuario/usuario';
+import { ProcessoService } from './processo.service';
 
 @Component({
   selector: 'app-processo',
   templateUrl: './processo.component.html',
-  styleUrls: ['./processo.component.css']
+  styleUrls: ['./processo.component.css'],
+  providers: [ProcessoService]
 })
 export class ProcessoComponent implements OnInit {
 
   processo = new Processo(null, "", "", "", false, null, null);  
   listaUsuariosFinalizadores : Usuario [] = [];
 
-  constructor() { }
+  constructor(private processoService: ProcessoService) { }
 
   ngOnInit() {
     this.retornaUsuariosFinalizadores();
@@ -36,6 +38,10 @@ export class ProcessoComponent implements OnInit {
     this.listaUsuariosFinalizadores.push(usuario1,usuario2,usuario3);
   
     //return this.listaUsuariosFinalizadores;
+  }
+
+  salvarProcesso(){
+    this.processoService.salvarProcesso(this.processo);
   }
 
 }

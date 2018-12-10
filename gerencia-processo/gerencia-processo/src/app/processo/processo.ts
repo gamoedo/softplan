@@ -9,7 +9,7 @@ export class Processo {
         public descricaoParecer: string,
         public processoJaComParecer: boolean,
         public usuarioParecerId: number,
-        public usuariosComAcessoProcesso: Usuario[]
+        public usuariosComAcessoProcesso: string[]
         ){}
 
 }

@@ -23,8 +23,8 @@
     <div class="input-group mb-3">  
       <div class="form-group" [class.has-success]="descricao.valid" [class.has-danger]="descricao.invalid">
           <label for="descricao">Descrição *</label>
-          <input class="form-control" [class.form-control-success]="descricao.valid" type="text" id="descricao" 
-          [(ngModel)]="processo.descricao" name="descricao" #descricao="ngModel" placeholder="Descrição" required>
+          <input class="form-control texto-descricao" [class.form-control-success]="descricao.valid" type="text" id="descricao" 
+          [(ngModel)]="processo.descricao" name="descricao" #descricao="ngModel" placeholder="" required>
 
 
           <div [hidden]="descricao.valid || descricao.pristine">

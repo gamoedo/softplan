@@ -14,7 +14,4 @@ export class AppComponent {
 
   }
 
-  retornaListaPerfis() :void{
-    this.perfilService.retornaListaPerfis();
-  }
 }
