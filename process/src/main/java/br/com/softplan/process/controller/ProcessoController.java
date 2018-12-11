@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.softplan.process.controller.request.ProcessoRequest;
 import br.com.softplan.process.exception.UnprocessableEntityException;
 import br.com.softplan.process.model.Processo;
 import br.com.softplan.process.service.ProcessoService;
@@ -29,14 +30,26 @@ public class ProcessoController {
     @Autowired
     ProcessoService processoService;
 
-    @PostMapping(value = "/rest/processo/salvar", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    @PostMapping(value = "/rest/processo/salvar", 
+	    	consumes = MediaType.APPLICATION_JSON_UTF8_VALUE, 
+	    	produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseStatus(code = HttpStatus.CREATED)
-    public Processo salvarProcesso(@RequestBody @Valid Processo processo) throws UnprocessableEntityException {
+    public Processo salvarProcesso(@RequestBody @Valid ProcessoRequest processoRequest) throws UnprocessableEntityException {
 	
 	logger.info("salvarProcesso: Recebendo processo");
 
-	processo = processoService.salvarProcesso(processo);	
+	Processo processo;
 	
+	try {
+	    logger.info("salvarProcesso: Convertendo processoRequest para processo");
+	    processo = processoRequest.toModel();
+	} catch (Exception e) {
+	    logger.info("salvarProcesso: Conversão falhou.");
+	    throw new UnprocessableEntityException();
+	}
+	
+	processo = processoService.salvarProcesso(processo);		
+
 	logger.info("salvarProcesso: Retornando processo salvo");
 	
 	return processo;

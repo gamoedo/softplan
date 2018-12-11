@@ -29,7 +29,7 @@ public class Processo {
     @Column(name="ds_titulo")
     private String titulo;
     
-    @Column(name="ds_descricao")
+    @Column(name="ds_processo")
     private String descricao;
     
     @Column(name="ds_parecer")
